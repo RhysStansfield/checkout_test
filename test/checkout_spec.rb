@@ -1,7 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-
-require './checkout'
+require File.expand_path(File.join(__FILE__, '..', 'test_helper'))
 
 describe Checkout do
   before do
