@@ -9,10 +9,14 @@ class Order
     find_existing_line_item_and_add(product) || add_line_item_for(product)
   end
 
+  def total
+    line_items.map(&:total).inject(0, :+)
+  end
+
   private
 
   def add_line_item_for(product)
-    self.line_items += LineItem.new(product)
+    line_items << LineItem.new(product)
   end
 
   def find_existing_line_item_and_add(product)
