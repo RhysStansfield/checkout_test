@@ -1,16 +1,21 @@
 class Order
-  attr_accessor :line_items
+  attr_accessor :line_items, :discount_amount
 
   def initialize
     self.line_items = []
+    self.discount_amount = 0.00
   end
 
   def add(product)
     find_existing_line_item_and_add(product) || add_line_item_for(product)
   end
 
-  def total
+  def subtotal
     line_items.map(&:total).inject(0, :+)
+  end
+
+  def total
+    subtotal - discount_amount
   end
 
   private
