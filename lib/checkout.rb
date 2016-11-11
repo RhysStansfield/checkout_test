@@ -17,7 +17,7 @@ class Checkout
   end
 
   def total
-    "£#{sprintf('%05.2f', order.total)}"
+    "£#{sprintf('%05.2f', order.total.round(2))}"
   end
 
   private
